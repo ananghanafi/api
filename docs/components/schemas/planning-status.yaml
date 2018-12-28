@@ -1,0 +1,10 @@
+type: object
+properties:
+  status:
+    type: string
+    enum: ['diajukan','disetujui']
+    example: diajukan
+  altStatus:
+    type: string
+    enum: ['indikatif','definitif']
+    example: indikatif

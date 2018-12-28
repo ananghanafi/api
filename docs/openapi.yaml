@@ -1,0 +1,151 @@
+openapi: 3.0.0
+info:
+  title: "PRIMS API"
+  description: |
+    API untuk SIM Monitoring Restorasi Gambut
+
+    Badan Restorasi Gambut
+  version: "1.0.0"
+
+servers:
+  - url: http://sim.brg.go.id:8383/api
+    description: Development Server
+  - url: http://localhost:8000/api
+    description: Local Server
+  - url: https://api.brg.go.id/prims/v1
+    description: Production Server
+
+tags:
+  - name: Auth
+    description: Authentication
+  - name: User
+    description: Kelola User
+  - name: Person
+    description: Kelola Personal
+  - name: Organization
+    description: Kelola Organisasi
+  - name: Plan
+    description: Kelola Perencanaan
+  - name: Implementation
+    description: Kelola Implementasi
+  - name: Report
+    description: Lihat Laporan Kegiatan
+  - name: Map
+    description: Kelola Peta
+  - name: Master
+    description: Kelola Data Master
+
+paths: 
+  /login:
+    $ref: paths/login.yaml
+  /me:
+    $ref: paths/me.yaml
+  /user:
+    $ref: paths/user.yaml
+  /user/{id}:
+    $ref: paths/user-by-id.yaml
+  /person:
+    $ref: paths/person.yaml
+  /constructionplan:
+    $ref: paths/construction-plan.yaml
+  /constructionplan/{id}:
+    $ref: paths/well-plan-by-id.yaml
+  /canalhoardingplan:
+    $ref: paths/canal-hoarding-plan.yaml
+  /canalhoardingplan/{id}:
+    $ref: paths/canal-hoarding-plan-by-id.yaml
+  /revegetationplan:
+    $ref: paths/revegetation-plan.yaml
+  /revegetationplan/{id}:
+    $ref: paths/revegetation-plan-by-id.yaml
+  /canalblockplan:
+    $ref: paths/canal-block-plan.yaml
+  /canalblockplan/{id}:
+    $ref: paths/canal-block-plan-by-id.yaml
+    # RetentionBasinPlan
+    # RevitalizationPlan
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Login:
+      $ref: components/schemas/login.yaml
+    User:
+      $ref: components/schemas/user.yaml
+    Person:
+      $ref: components/schemas/person.yaml
+    Gender:
+      type: string
+      enum: [L, P]
+      description: >
+        Jenis Kelamin:
+          * `L` - Laki-laki
+          * `P` - Perempuan
+    DateTime:
+      type: string
+      pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$'
+      readOnly: true
+      example: '2018-07-19 17:35:29'
+    Coordinate:
+      $ref: components/schemas/coordinate.yaml
+    AdministrativeArea:
+      $ref: components/schemas/administrative-area.yaml
+    Place:
+      $ref: components/schemas/place.yaml
+    Activity:
+      $ref: components/schemas/activity.yaml
+    CanalHoardingActivity:
+      $ref: components/schemas/canal-hoarding-activity.yaml
+    RevegetationActivity:
+      $ref: components/schemas/revegetation-activity.yaml
+    CanalBlockActivity:
+      $ref: components/schemas/canal-block-activity.yaml
+    DetailWellInfo:
+      $ref: components/schemas/detail-well-info.yaml
+    ConstructionPlan:
+      $ref: components/schemas/construction-plan.yaml
+    CanalHoardingPlan:
+      $ref: components/schemas/canal-hoarding-plan.yaml
+    RevegetationPlan:
+      $ref: components/schemas/revegetation-plan.yaml
+    CanalBlockPlan:
+      $ref: components/schemas/canal-block-plan.yaml
+    ConstructionType:
+      $ref: components/schemas/construction-type.yaml
+    PlanningStatus:
+      $ref: components/schemas/planning-status.yaml
+    ImplementationStatus:
+      $ref: components/schemas/implementation-status.yaml
+    FundingSource:
+      $ref: components/schemas/funding-source.yaml
+    ZoneType:
+      $ref: components/schemas/zone-type.yaml
+    PeatHydrologicalUnity:
+      $ref: components/schemas/peat-hydrological-unity.yaml
+    Document:
+      $ref: components/schemas/document.yaml
+    ResponseLogin:
+      $ref: components/schemas/response-login.yaml
+    ResponseUser:
+      $ref: components/schemas/response-user.yaml
+    ResponseMe:
+      $ref: components/schemas/response-me.yaml
+    ResponsePerson:
+      $ref: components/schemas/response-person.yaml
+    ResponseConstructionPlan:
+      $ref: components/schemas/response-construction-plan.yaml
+    ResponseCanalHoardingPlan:
+      $ref: components/schemas/response-canal-hoarding-plan.yaml
+    ResponseWellPlanById:
+      $ref: components/schemas/response-well-plan-by-id.yaml
+    ResponseRevegetationPlan:
+      $ref: components/schemas/response-revegetation-plan.yaml
+    ResponseCanalBlockPlan:
+      $ref: components/schemas/response-canal-block-plan.yaml
+
+security:
+  - bearerAuth: []

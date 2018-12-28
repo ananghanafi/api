@@ -1,0 +1,42 @@
+put:
+  tags:
+    - Plan
+  summary: Update Canal Block Plan
+  operationId: updateCanalBlockPlan
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: string
+
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../openapi.yaml#/components/schemas/CanalBlockPlan
+  responses:
+    '400':
+      description: Invalid id supplied
+    '404':
+      description: Canal block not found
+
+get:
+  tags:
+    - Plan
+  summary: Show Canal Block Plan by id
+  operationId: showCanalBlockPlanById
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../openapi.yaml#/components/schemas/ResponseCanalBlockPlan

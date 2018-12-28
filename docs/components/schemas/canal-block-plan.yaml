@@ -1,0 +1,9 @@
+type: object
+required:
+  - generalActivity
+  - status
+properties:
+  generalActivity:
+    $ref: ../../openapi.yaml#/components/schemas/CanalBlockActivity
+  status:
+    $ref: ../../openapi.yaml#/components/schemas/PlanningStatus

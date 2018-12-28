@@ -1,0 +1,54 @@
+type: object
+properties:
+  id:
+    type: integer
+    readOnly: true
+    example: 7
+  generalActivityId:
+    type: integer
+    example: 4
+  wellDepth:
+    description: Kedalaman Sumur Bor (meter)
+    type: string
+    example: 40
+  peatDepth:
+    description: Kedalaman Gambut (meter)
+    type: string
+    example: 10
+  wellDebit:
+    description: Debit Sumur Bor (L/s)
+    type: string
+  dayaSemprotAir:
+    description: Daya Semprot Air 
+    type: string
+  nearestWell:
+    description: Jarak Sumur Bor Terdekat
+  wellCoordinate:
+    $ref: ../../openapi.yaml#/components/schemas/Coordinate
+  utmZone:
+    description: Zona UTM (meter)
+    type: string
+  elevation:
+    description: Elevasi (mdpl)
+    type: integer
+  roadAccess:
+    description: Akses/Jalan ke Lokasi
+    type: string
+  locationRemark:
+    description: Uraian Lokasi
+    type: string
+  detailSketch:
+    description: Sketsa Detail
+    type: string
+  toNorth:
+    description: Arah Pandang ke Utara
+    type: string
+  toSouth:
+    description: Arah Pandang ke Selatan
+    type: string  
+  toEast:
+    description: Arah Pandang ke Timur
+    type: string
+  toWest:
+    description: Arah Pandang ke Barat
+    type: string

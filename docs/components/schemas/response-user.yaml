@@ -1,0 +1,38 @@
+type: object
+properties:
+  currentPage:
+    type: integer
+    example: 1
+  data:
+    type: array
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/User
+  firstPageUrl:
+    type: string
+    example: 'https://sim.dev.brg.go.id/api/user?page=1'
+  from:
+    type: integer
+    example: 1
+  lastPage:
+    type: integer
+    example: 3
+  lastPageUrl:
+    type: string
+    example: 'https://sim.dev.brg.go.id/api/user?page=3'
+  nextPageUrl:
+    type: string
+    example: 'https://sim.dev.brg.go.id/api/user?page=2'
+  path:
+    type: string
+    example: 'https://sim.dev.brg.go.id/api/user'
+  perPage:
+    type: integer
+    example: 10
+  prevPageUrl:
+    type: string
+  to:
+    type: integer
+    example: 10
+  total:
+    type: integer
+    example: 32

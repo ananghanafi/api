@@ -1,0 +1,11 @@
+type: object
+properties:
+  id:
+    type: integer
+    readOnly: true
+  type:
+    type: string
+    example: sbo
+  desc:
+    type: string
+    example: Konstruksi Sumur Bor

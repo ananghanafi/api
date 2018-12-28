@@ -1,0 +1,12 @@
+type: object
+properties:
+  type:
+    type: string
+    enum: ['apbn','apbd','donor','lainnya']
+    example: apbn
+  year:
+    type: string
+    example: 2018
+  remark:
+    type: string
+    example: APBN 2018

@@ -1,0 +1,18 @@
+get:
+  tags:
+    - Auth
+  summary: Show My Info
+  operationId: showMyInfo
+  # parameters:
+  #   - in: header
+  #     name: Authorization
+  #     required: true
+  #     schema:
+  #       type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../openapi.yaml#/components/schemas/ResponseMe

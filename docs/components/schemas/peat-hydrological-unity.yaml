@@ -1,0 +1,27 @@
+type: object
+properties:
+  id:
+    type: integer
+    readOnly: true
+    example: 7
+  code:
+    type: string
+    description: Kode Kesatuan Hidrologis Gambut (KHG)
+    example: KHG.62.02-06.01
+  name:
+    type: string
+    description: Nama Kesatuan Hidrologis Gambut (KGH)
+    example: KHG Sungai Katingan - Sungai Mentaya
+  year:
+    type: string
+    description: Tahun sasaran KHG
+    example: 2018
+  totalArea:
+    type: number
+    format: float
+    description: Luas wilayah KHG
+    example: 361295.573746
+  phuType:
+    type: integer
+    description: Jenis KHG
+    example: 2

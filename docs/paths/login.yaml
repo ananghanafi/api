@@ -1,0 +1,23 @@
+post:
+  tags:
+    - Auth
+  summary: Login
+  description: Login to system
+  operationId: login
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../openapi.yaml#/components/schemas/Login
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: ../openapi.yaml#/components/schemas/Login
+  responses:
+    '200':
+      description: Login Success
+      content:
+        application/json:
+          schema:
+            $ref: ../openapi.yaml#/components/schemas/ResponseLogin
+  security: []

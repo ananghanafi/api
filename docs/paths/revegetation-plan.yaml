@@ -1,0 +1,38 @@
+post:
+  tags:
+    - Plan
+  summary: Create Revegetation Plan
+  description: Membuat rencana revegetasi
+  operationId: createRevegetationPlan
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../openapi.yaml#/components/schemas/RevegetationPlan
+  responses:
+    '201':
+      description: Created
+
+get:
+  tags:
+    - Plan
+  summary: List Revegetation Plan
+  description: Melihat daftar rencana revegetasi
+  operationId: listRevegetationPlan
+  parameters:
+    - in: query
+      name: page
+      description: Halaman yang diinginkan
+      schema:
+        type: integer
+      example: 2
+  responses:
+    '200':
+      description: List of Revegetation Plan to be returned
+      content:
+        application/json:
+          schema:
+            $ref: ../openapi.yaml#/components/schemas/ResponseRevegetationPlan
+    '401':
+      description: Authorization information is missing or invalid.

@@ -1,0 +1,54 @@
+type: object
+required:
+  - fullNama
+  - email
+properties:
+  id:
+    type: integer
+    readOnly: true
+    example: 7
+  fullName:
+    type: string
+    example: Michael Jordan
+  titlePrefix:
+    type: string
+    example: Prof. Dr.
+  titleSuffix:
+    type: string
+    example: M.Sc.
+  email:
+    type: string
+    format: email
+    example: user@brg.go.id
+  photo:
+    type: string
+  gender:
+    description: Jenis Kelamin (L/P)
+    $ref: ../../openapi.yaml#/components/schemas/Gender
+  religion:
+    description: Agama
+    type: string
+    example: Islam
+  birthPlace:
+    description: Tempat Lahir
+    type: string
+    example: Malang
+  birthDate:
+    description: Tanggal Lahir
+    type: string
+    format: date
+    example: '1968-01-23'
+  jobTitle:
+    description: Jabatan
+    type: string
+    example: Kepala Bidang Perencanaan
+  userId:
+    type: integer
+  createdAt:
+    $ref: ../../openapi.yaml#/components/schemas/DateTime
+  updatedAt:
+    $ref: ../../openapi.yaml#/components/schemas/DateTime
+  isDeleted:
+    type: string
+    enum: [0,1]
+    readOnly: true

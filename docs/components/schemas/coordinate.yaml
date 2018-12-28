@@ -1,0 +1,8 @@
+type: object
+properties:
+  lat:
+    type: string
+    example: 23.4582348
+  lng:
+    type: string
+    example: 37.5062675

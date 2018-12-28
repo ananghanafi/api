@@ -1,0 +1,51 @@
+type: object
+properties:
+  id:
+    type: integer
+    readOnly: true
+    example: 7
+  name:
+    description: Nama Kegiatan
+    type: string
+    example: Pembangunan Sumur Bor
+  code:
+    description: Kode Obyek Konstruksi
+    type: string
+    example: SBO-LBG-001
+  type:
+    description: Jenis Kegiatan
+    $ref: ../../openapi.yaml#/components/schemas/ConstructionType
+  unit:
+    description: Jumlah Unit
+    type: integer
+    example: 3
+  affectedArea:
+    description: Luas Terdampak (Ha)
+    type: integer
+    example: 20
+  zoneType:
+    description: Tipe Kawasan
+    $ref: ../../openapi.yaml#/components/schemas/ZoneType
+  cost:
+    description: Biaya
+    type: integer
+  fundingSource:
+    description: Sumber Anggaran
+    $ref: ../../openapi.yaml#/components/schemas/FundingSource
+  remark:
+    description: Keterangan
+    type: string
+  administrativeArea:
+    description: Wilayah Administratif
+    $ref: ../../openapi.yaml#/components/schemas/AdministrativeArea
+  peatHydrologicalUnity:
+    description: Kesatuan Hidrologis Gambut (KHG)
+    $ref: ../../openapi.yaml#/components/schemas/PeatHydrologicalUnity
+  coordinate:
+    description: Koordinat
+    $ref: ../../openapi.yaml#/components/schemas/Coordinate
+  relatedDocuments:
+    type: array
+    description: Dokumen Terkait
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/Document

@@ -1,0 +1,42 @@
+put:
+  tags:
+    - Plan
+  summary: Update Well Plan
+  operationId: updateWellPlan
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: string
+
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../openapi.yaml#/components/schemas/ConstructionPlan
+  responses:
+    '400':
+      description: Invalid id supplied
+    '404':
+      description: Well plan not found
+
+get:
+  tags:
+    - Plan
+  summary: Show Well Plan by id
+  operationId: showWellPlanById
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../openapi.yaml#/components/schemas/ResponseWellPlanById

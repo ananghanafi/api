@@ -1,0 +1,15 @@
+type: object
+properties:
+  id:
+    type: integer
+    readOnly: true
+  shortName:
+    type: string
+  longName:
+    type: string
+  orgType:
+    type: integer
+  parentId:
+    type: integer
+  address:
+    type: string

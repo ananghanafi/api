@@ -1,0 +1,11 @@
+type: object
+properties:
+  id:
+    type: integer
+    readOnly: true
+  type:
+    type: string
+    example: konsesi
+  desc:
+    type: string
+    example: Konsesi

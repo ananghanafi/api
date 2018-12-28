@@ -1,0 +1,14 @@
+type: object
+properties:
+  province:
+    description: Provinsi
+    $ref: ../../openapi.yaml#/components/schemas/Place
+  city:
+    description: Kota
+    $ref: ../../openapi.yaml#/components/schemas/Place
+  subDistrict:
+    description: Kecamatan
+    $ref: ../../openapi.yaml#/components/schemas/Place
+  village:
+    description: Desa
+    type: string

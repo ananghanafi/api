@@ -1,0 +1,12 @@
+type: object
+required:
+  - username
+  - password
+properties:
+  username:
+    type: string
+    format: email
+    example: user@brg.go.id
+  password:
+    type: string
+    example: secret

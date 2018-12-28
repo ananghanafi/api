@@ -1,0 +1,9 @@
+type: object
+properties:
+  administrativeArea:
+    description: Wilayah Administrasi
+    $ref: ../../openapi.yaml#/components/schemas/AdministrativeArea
+  coordinate:
+    type: string
+    description: Koordinat
+    $ref: ../../openapi.yaml#/components/schemas/Coordinate

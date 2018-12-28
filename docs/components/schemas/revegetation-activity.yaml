@@ -1,0 +1,37 @@
+type: object
+properties:
+  id:
+    type: integer
+    readOnly: true
+    example: 7
+  name:
+    description: Nama Kegiatan
+    type: string
+    example: Revegetasi
+  code:
+    description: Kode Obyek Konstruksi
+    type: string
+    example: 2018_R1.3_62_00001
+  cost:
+    description: Nominal Anggaran
+    type: integer
+  fundingSource:
+    description: Sumber Anggaran
+    $ref: ../../openapi.yaml#/components/schemas/FundingSource
+  remark:
+    description: Keterangan
+    type: string
+  administrativeArea:
+    description: Wilayah Administratif
+    $ref: ../../openapi.yaml#/components/schemas/AdministrativeArea
+  phu:
+    description: Kesatuan Hidrologis Gambut (KHG)
+    $ref: ../../openapi.yaml#/components/schemas/PeatHydrologicalUnity
+  coordinate:
+    description: Koordinat
+    $ref: ../../openapi.yaml#/components/schemas/Coordinate
+  relatedDocuments:
+    type: array
+    description: Dokumen Terkait
+    items:
+      $ref: ../../openapi.yaml#/components/schemas/Document

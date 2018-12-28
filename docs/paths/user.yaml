@@ -1,0 +1,50 @@
+post:
+  tags:
+    - User
+  summary: Create User
+  description: Create User
+  operationId: createUser
+  parameters:
+    - in: header
+      name: Authorization
+      required: true
+      schema:
+        type: string
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../openapi.yaml#/components/schemas/User
+      application/x-www-form-urlencoded:
+        schema:
+          $ref: ../openapi.yaml#/components/schemas/User
+  responses:
+    '201':
+      description: Created
+
+get:
+  tags:
+    - User
+  summary: List User
+  description: List User
+  operationId: listUser
+  parameters:
+    - in: header
+      name: Authorization
+      required: true
+      schema:
+        type: string
+    - in: query
+      name: page
+      description: Halaman yang diinginkan
+      schema:
+        type: integer
+      example: 2
+  responses:
+    '200':
+      description: List of User to be returned
+      content:
+        application/json:
+          schema:
+            $ref: ../openapi.yaml#/components/schemas/ResponseUser

@@ -1,0 +1,28 @@
+type: object
+required:
+  - fullName
+  - email
+properties:
+  id:
+    type: integer
+    readOnly: true
+    example: 7
+  fullName:
+    type: string
+    example: Michael Jordan
+  email:
+    type: string
+    format: email
+    example: user@brg.go.id
+  isActive:
+    type: string
+    enum: [0,1]
+    default: 1
+  isDeleted:
+    type: string
+    enum: [0,1]
+    default: 0
+  createdAt:
+    $ref: ../../openapi.yaml#/components/schemas/DateTime
+  updatedAt:
+    $ref: ../../openapi.yaml#/components/schemas/DateTime

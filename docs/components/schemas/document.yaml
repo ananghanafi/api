@@ -1,0 +1,17 @@
+type: object
+properties:
+  id:
+    type: integer
+    readOnly: true
+  fileType:
+    type: string
+    enum: [doc,pdf,xls]
+    example: doc
+  fileName:
+    type: string
+    example: KAK Konstruksi Sumur Bor
+  url:
+    type: string
+    example: http://api.brg.go.id/api/v1/doc/1
+  remark:
+    type: string

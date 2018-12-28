@@ -1,0 +1,37 @@
+post:
+  tags:
+    - Plan
+  summary: Create New Well Plan
+  description: Membuat rencana pembangunan sumur bor
+  operationId: createWellPlan
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../openapi.yaml#/components/schemas/ConstructionPlan
+  responses:
+    '201':
+      description: Created
+
+get:
+  tags:
+    - Plan
+  summary: List Well Plan
+  description: Melihat daftar rencana pembangunan sumur bor
+  operationId: listWellPlan
+  parameters:
+    - in: query
+      name: page
+      description: Halaman yang diinginkan
+      schema:
+        type: integer
+      example: 2
+  responses:
+    '200':
+      description: List of Well Plan to be returned
+      content:
+        application/json:
+          schema:
+            $ref: ../openapi.yaml#/components/schemas/ResponseConstructionPlan
+    '401':
+      description: Authorization information is missing or invalid.
