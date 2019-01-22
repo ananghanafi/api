@@ -289,6 +289,13 @@ Route::group(['middleware' => ['auth:api','permission']], function () {
     Route::get('person/{id}', ['as' => 'permission.person.show', 'uses' => 'Api\PersonController@show']);
     Route::put('person/{id}', ['as' => 'permission.person.update', 'uses' => 'Api\PersonController@update']);
     Route::delete('person/{id}', ['as' => 'permission.person.delete', 'uses' => 'Api\PersonController@delete']);
+
+    Route::get('personal',['as' => 'permission.personal.index','uses'=>'Api\PersonalController@index']);
+    Route::post('personal',['as' => 'permission.personal.store','uses'=>'Api\PersonalController@store']);
+    Route::get('personal/{id}',['as' => 'permission.personal.show','uses'=>'Api\PersonalController@show']);
+    Route::put('personal/{id}',['as' => 'permission.personal.update','uses'=>'Api\PersonalController@update']);
+    Route::delete('personal/{id}',['as' => 'permission.personal.delete','uses'=>'Api\PersonalController@delete']);
+    
     
 });
 
