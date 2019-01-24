@@ -80,5 +80,8 @@ class DatabaseSeeder extends Seeder
         $this->call(MCurrencyTableSeeder::class);
         $this->call(MBrgMandatTableSeeder::class);
         $this->call(MDonorActivityStatusesTableSeeder::class);
+
+        # Personal
+        $this->call(PersonalsTableSeeder::class);
     }
 }

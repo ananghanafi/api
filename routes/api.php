@@ -296,6 +296,28 @@ Route::group(['middleware' => ['auth:api','permission']], function () {
     Route::put('personal/{id}',['as' => 'permission.personal.update','uses'=>'Api\PersonalController@update']);
     Route::delete('personal/{id}',['as' => 'permission.personal.delete','uses'=>'Api\PersonalController@delete']);
     
-    
+    Route::get('donordash/anggaran',['as'=>'permission.donordash.anggaran', 'uses'=>'Api\DonorDashController@anggaran']);
+    Route::get('donordash/berdasarkegiatan',['as'=>'permission.donordash.berdasarkegiatan','uses'=>'Api\DonorDashController@berdasarkegiatan']);
+    Route::get('donordash/wil',['as'=>'permission.donordash.berdasarwil', 'uses'=>'Api\DonorDashController@berdasarWil']);
+    Route::get('donordash/summary',['as'=>'permission.donordash.summary', 'uses'=>'Api\DonorDashController@summary']);
+    Route::get('donordash/v2provinsi',['as'=>'permission.donordash.v2provinsi', 'uses'=>'Api\DonorDashController@v2provinsi']);
+    Route::get('donordash/v3profile',['as'=>'permission.donordash.v3profile', 'uses'=>'Api\DonorDashController@v3profile']);
+   // Route::get('donordash',['as'=>'permission.donordash.store','uses'=>'Api\DonorDashController@store']);
+
+//    Route::get('/donordash/plan-anggaran', ['as' => 'permission.donordash.anggaran', 'uses' => 'Api\DonorDashCOntroller@anggaran']);
+//     Route::get('/donordash/total-cost-plan', ['as' => 'permission.donordash.totalcost', 'uses' => 'Api\DonorDashCOntroller@totalCost']);
+//     Route::get('/donordash/cost-by-funding-source-plan', ['as' => 'permission.donordash.costbyfundingsource', 'uses' => 'Api\DonorDashCOntroller@costByFundingSource']);
+//     Route::get('/donordash/cost-by-province-plan', ['as' => 'permission.donordash.costbyprovince', 'uses' => 'Api\DonorDashCOntroller@costByProvince']);
+//     Route::get('/donordash/total-area-plan', ['as' => 'permission.donordash.totalarea', 'uses' => 'Api\DonorDashCOntroller@totalArea']);
+//     Route::get('/donordash/area-by-province-plan', ['as' => 'permission.donordash.areabyprovince', 'uses' => 'Api\DonorDashCOntroller@areaByProvince']);
+//     Route::get('/donordash/total-action-plan', ['as' => 'permission.donordash.totalaction', 'uses' => 'Api\DonorDashCOntroller@totalAction']);
+//     Route::get('/donordash/action-by-province-plan', ['as' => 'permission.donordash.actionbyprovince', 'uses' => 'Api\DashboardController@actionByProvince']);
+
+    Route::get('donordash', ['as' => 'permission.donordash.index', 'uses' => 'Api\DonorDashController@index']);
+    Route::post('donordash', ['as' => 'permission.donordash.store', 'uses' => 'Api\DonorDashController@store']);
+    Route::get('donordash/{id}', ['as' => 'permission.donordash.show', 'uses' => 'Api\DonorDashController@show']);
+    Route::put('donordash/{id}', ['as' => 'permission.donordash.update', 'uses' => 'Api\DonorDashController@update']);
+//    Route::delete('donoractivities/{id}', ['as' => 'permission.donoractivities.delete', 'uses' => 'Api\DonorActivityController@delete']);
+    Route::put('donordash/{id}/status', ['as' => 'permission.donordash.updatestatus', 'uses' => 'Api\DonorDashController@updateStatus']);
 });
 

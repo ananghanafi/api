@@ -20,7 +20,7 @@ class Personal extends Model
         'api_token',
     ];
     public $timestamps = true;
-    
+     
     protected $hidden = [
         'password', 'remember_token','api_token'
     ];
