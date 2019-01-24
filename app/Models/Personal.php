@@ -7,6 +7,7 @@ use App\Traits\ModelTrait;
 
 class Personal extends Model
 {
+    use Notifiable,ApilibUserTrait,ModelTrait;
     protected $table = 'personals';
     protected $primaryKey = 'id';
     protected $fillable = [

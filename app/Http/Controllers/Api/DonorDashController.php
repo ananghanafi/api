@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Traits\ControllerTrait;
 use App\Models\DonorDash;
-use Validator;
+ use Validator;
 use DB;
 
 class DonorDashController extends Controller
@@ -22,11 +22,10 @@ class DonorDashController extends Controller
     
     public function store(Request $request) {
         $model = new DonorDash;
-        $validator = Validator::make($request->all(), $model->getRule());
+       $validator = Validator::make($request->all(), $model->getRule());
         if ($validator->fails()) {
             return $this->sendError($validator->errors()->toArray());
         }
-        
         $fundingSource = $request->fundingSource;
         $administrativeArea = $request->administrativeArea;
         $province = $administrativeArea['province'];
@@ -69,7 +68,7 @@ class DonorDashController extends Controller
             return $this->sendError("Data tidak ada");
         }
         
-        
+      
         $fundingSource = $request->fundingSource;
         $administrativeArea = $request->administrativeArea;
         $province = $administrativeArea['province'];
@@ -148,7 +147,63 @@ class DonorDashController extends Controller
         $model->ubah($data,$id);
         return $this->sendData(['message' => 'Berhasil Hapus']);
     }
-    
+    public function coba(){
+        $data='[
+            {
+                "id" : 1,
+                "title":"Judul",
+                "summary" : "Kegiatan",
+                "start_date":"2018-11-18 16:17:41",
+                "end_date":"2019-11-18 16:17:41",
+                "amount":5000,
+                "currency":5000,
+                "funding_source": 5000,
+                "implementing_agency": 20,
+                "remark": "Remark",
+                "year":"2018",
+                "province_id" : 14 ,
+                "city_id" : 1402,
+                "sub_district_id" : 1401001,
+                "village" : 140100111,
+                "x" : 107.44,
+                "y" : 107.44,
+                "status" : 0,
+
+        },
+        {
+            "title":"Judul",
+            "amount":5000,
+            "currency": {
+                "id":1
+            },
+             "phu_id": {
+                "id":1
+            },
+            "fundingSource":{
+                "id":1
+            },
+            "implementingAgency":{
+                "id":1
+            },
+            "administrativeArea":{
+                "province": {
+                    "provinceId":1
+                },
+                "city":{
+                    "cityId":1
+                },
+                "subDistrict":{
+                    "id":1
+                },
+                "village":{
+                    "villageId":1
+                }
+            } 
+           
+        }
+        ]';
+        return $data;
+    }
     public function anggaran()
     {
          $data = '[ 
