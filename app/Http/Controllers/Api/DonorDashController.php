@@ -217,6 +217,7 @@ class DonorDashController extends Controller
 $peatlandRewetting =  DB::table('donor_activities')
                         ->select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
                         ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+    //                    ->join('m_brg_mandat', 'm_brg_mandat.desc_en', 'm_brg_mandat.id')
                         ->where('mandat_id', 1)
                         ->groupBy('province_id')->get()->toArray();
 $revegetation =  DB::table('donor_activities')
@@ -265,13 +266,15 @@ $adminstrartionManagement =  DB::table('donor_activities')
         $prov = [];
         $total_anggaran = 0;
         foreach ($allCost->all() as $ang){
-            // $province_id = $ang['province']
-            // $province_id = $ang['administrative_area']['province']->province_id;
-            // $prov[$province_id] = [
-            //     'anggaran' => (isset($prov[$province_id]['anggaran']) ? $prov[$province_id]['anggaran'] : 0) + $ang['amount'],
-            //     'province' => $ang['administrative_area']['province'],
-            // ];
-            // $total_anggaran += isset($prov[$province_id]['anggaran']) ? $prov[$province_id]['anggaran'] : 0;
+          
+          //   $province_id = $ang['province']->$province_id;
+        //     $province_id = $ang['administrative_area']['province']->province_id;
+        //     $prov[$province_id] = [
+        //         'anggaran' => (isset($prov[$province_id]['anggaran']) ? $prov[$province_id]['anggaran'] : 0) + $ang['amount'],
+        //         'province' => $ang['administrative_area']['province'],
+        //     ];
+        //     $total_anggaran += isset($prov[$province_id]['anggaran']) ? $prov[$province_id]['anggaran'] : 0;
+        //  $total_anggaran += isset($prov[$province_id]['anggaran']) ? $prov[$province_id]['anggaran'] : 0;
         }
         
         // $resp = [];
@@ -283,7 +286,7 @@ $adminstrartionManagement =  DB::table('donor_activities')
         //     ];
         // }
         
-        return $this->sendData( $allCost->all());
+        return $this->sendData( $peatlandRewetting);
       //  return $this->sendData($resp);
     }
     public function berdasarkegiatan()
