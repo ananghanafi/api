@@ -319,6 +319,7 @@ Route::group(['middleware' => ['auth:api','permission']], function () {
     Route::put('donordash/{id}', ['as' => 'permission.donordash.update', 'uses' => 'Api\DonorDashController@update']);
 //    Route::delete('donoractivities/{id}', ['as' => 'permission.donoractivities.delete', 'uses' => 'Api\DonorActivityController@delete']);
     Route::put('donordash/{id}/status', ['as' => 'permission.donordash.updatestatus', 'uses' => 'Api\DonorDashController@updateStatus']);
+       Route::get('/donordash/anggaran', ['as' => 'permission.donordash.anggaran', 'uses' => 'Api\DonorDashCOntroller@anggaran']);
 
 //     Route::get('donordash', ['as' => 'permission.donordash.index', 'uses' => 'Api\DonorDashController@index']);
 //     Route::post('donordash', ['as' => 'permission.donordash.store', 'uses' => 'Api\DonorDashController@store']);
