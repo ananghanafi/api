@@ -419,7 +419,7 @@ $dbBrgMandat = DB::table('m_brg_mandat')->select('m_brg_mandat.id','desc_en')->g
         ]'; 
         return $data;
     } 
-    public function totalCost()
+    public function totalcost()
     {
         // $wellPlan = DB::table('construction_plan')->sum('cost');
         // $canalBlockPlan = DB::table('canal_block_plans')->sum('cost');
@@ -434,46 +434,11 @@ $dbBrgMandat = DB::table('m_brg_mandat')->select('m_brg_mandat.id','desc_en')->g
         // $resp = [ 'totalCost' => $total ];
 
         // return $this->sendData($resp);
-        $peatlandRewetting =  DonorDash::select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
-                        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
-                        ->where('mandat_id', 1)
-                        ->groupBy('province_id')->get()->toArray();
-$revegetation =  DonorDash::select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency')
-                        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
-                        ->where('mandat_id', 2)
-                        ->groupBy('province_id')->get()->toArray();
-$revitalization =  DonorDash::select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency')
-                        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
-                        ->where('mandat_id', 3)
-                        ->groupBy('province_id')->get()->toArray();
-$baseStabilization =  DonorDash::select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency')
-                        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
-                        ->where('mandat_id', 4)
-                        ->groupBy('province_id')->get()->toArray();
-$instStrengthening =  DonorDash::select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency')
-                        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
-                        ->where('mandat_id', 5)
-                        ->groupBy('province_id')->get()->toArray();
-$coopImprove =  DonorDash::select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency')
-                        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
-                        ->where('mandat_id', 6)
-                        ->groupBy('province_id')->get()->toArray();
-$actifRoles =  DonorDash::select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency')
-                        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
-                        ->where('mandat_id', 7)
-                        ->groupBy('province_id')->get()->toArray();
-$peatlandRestoration =  DonorDash::select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency')
-                        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
-                        ->where('mandat_id', 8)
-                        ->groupBy('province_id')->get()->toArray();
-$adminstrartionManagement =  DonorDash::select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency')
-                        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
-                        ->where('mandat_id', 9)
-                        ->groupBy('province_id')->get()->toArray();
+$peatlandRewetting =  DB::table('donor_activities')->sum('amount');
+$peatlandRewetting2 =  DB::table('donor_activities')->sum('amount');
+$total = collect([$peatlandRewetting, $peatlandRewetting2])->sum();
 
-             $total = collect([$peatlandRewetting, $revegetation, $revitalization, $baseStabilization, $instStrengthening, $coopImprove, $actifRoles, $peatlandRestoration, $adminstrartionManagement])->sum();
-
-        $resp = [ 'totalCost' => $total ];
+        $resp = [ 'totalcost' => $total];
 
          return $this->sendData($resp);
     }
