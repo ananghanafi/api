@@ -274,7 +274,8 @@ class DonorDashController extends Controller
         //         'province' => $p['province']->long_name,
         //     ];
         // }
-           $resp = ['anggaran'=>$peatlandRewetting];
+        $fdsf=66;
+           $resp = ['anggaran'=>$peatlandRewetting, 'anggaran3'=>$fdsf];
   return $this->sendData($resp);
 //        return $this->sendData($resp);
     }
