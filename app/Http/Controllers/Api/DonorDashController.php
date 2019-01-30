@@ -288,23 +288,77 @@ class DonorDashController extends Controller
 //        return $this->sendData($resp);
     }
     public function peatlandrewetting(){
-        // $model = new DonorDash;
-        // $peatlandRewetting = DB::table('donor_activities')->sum('amount');
-        // $peatlandRewetting =  DonorDash::select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
-        //                 ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
-        //                 ->where('mandat_id', 1)
-        //                 ->groupBy('province_id')->get()->toArray();
         $peatlandRewetting =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
         ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
         ->where('mandat_id', 1)
         ->groupBy('province_id')->first();
-        // $dsds=2323;
         $collection=collect($peatlandRewetting)->max();
-    //    $cek= $collection->collapse();
-    //     $dsd='anggaran';
         $respi = ['anggaran'=>$collection];
         return $this->sendData($respi);
 
+    }
+    public function revegetation(){
+        $peatlandRewetting =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+        ->where('mandat_id', 2)
+        ->groupBy('province_id')->first();
+        $collection=collect($peatlandRewetting)->max();
+        $respi = ['anggaran'=>$collection];
+        return $this->sendData($respi);
+    }
+    public function baseStabilization(){
+        $peatlandRewetting =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+        ->where('mandat_id', 3)
+        ->groupBy('province_id')->first();
+        $collection=collect($peatlandRewetting)->max();
+        $respi = ['anggaran'=>$collection];
+        return $this->sendData($respi);
+    }
+    public function instSrengthening(){
+        $peatlandRewetting =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+        ->where('mandat_id', 4)
+        ->groupBy('province_id')->first();
+        $collection=collect($peatlandRewetting)->max();
+        $respi = ['anggaran'=>$collection];
+        return $this->sendData($respi);
+    }
+    public function coopImprove(){
+        $peatlandRewetting =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+        ->where('mandat_id', 5)
+        ->groupBy('province_id')->first();
+        $collection=collect($peatlandRewetting)->max();
+        $respi = ['anggaran'=>$collection];
+        return $this->sendData($respi);
+    }
+    public function actifRoles(){
+        $peatlandRewetting =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+        ->where('mandat_id', 6)
+        ->groupBy('province_id')->first();
+        $collection=collect($peatlandRewetting)->max();
+        $respi = ['anggaran'=>$collection];
+        return $this->sendData($respi);
+    }
+    public function peatlandRestoration(){
+        $peatlandRewetting =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+        ->where('mandat_id', 7)
+        ->groupBy('province_id')->first();
+        $collection=collect($peatlandRewetting)->max();
+        $respi = ['anggaran'=>$collection];
+        return $this->sendData($respi);
+    }
+    public function administrationManagement(){
+        $peatlandRewetting =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+        ->where('mandat_id', 8)
+        ->groupBy('province_id')->first();
+        $collection=collect($peatlandRewetting)->max();
+        $respi = ['anggaran'=>$collection];
+        return $this->sendData($respi);
     }
     public function berdasarkegiatan()
     {
