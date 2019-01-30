@@ -254,18 +254,18 @@ class DonorDashController extends Controller
 //         $collection = collect([$peatlandRewetting, $revegetation, $revitalization, $baseStabilization, $instStrengthening, $coopImprove, $actifRoles, $peatlandRestoration, $adminstrartionManagement ]);
 //         $allCost = $collection->collapse();
 //         $prov = [];
-//       //  $cek="";
-//         $total_anggaran = 0;
-//         foreach ($allCost->all() as $ang){
-//             $province_id = $ang['administrative_area']['province']->province_id;
-//             $prov[$province_id] = [
-//                 'anggaran' => (isset($prov[$province_id]['anggaran']) ? $prov[$province_id]['anggaran'] : 0) + $ang['amount'],
-//                 'province' => $ang['administrative_area']['province'],
-//             ];
-//             $total_anggaran += isset($prov[$province_id]['anggaran']) ? $prov[$province_id]['anggaran'] : 0;
-//        }
+      //  $cek="";
+    //     $total_anggaran = 0;
+    //     foreach ($allCost->all() as $ang){
+    //         $province_id = $ang['administrative_area']['province']->province_id;
+    //         $prov[$province_id] = [
+    //             'anggaran' => (isset($prov[$province_id]['anggaran']) ? $prov[$province_id]['anggaran'] : 0) + $ang['amount'],
+    //             'province' => $ang['administrative_area']['province'],
+    //         ];
+    //         $total_anggaran += isset($prov[$province_id]['anggaran']) ? $prov[$province_id]['anggaran'] : 0;
+    //    }
         
-       $peatlandRewetting = DB::table('donor_activities')->sum('amount');
+      $peatlandRewetting = DB::table('donor_activities')->sum('amount');
         // $resp = [];
         // foreach ($prov as $p) {
         //     $resp[] = [
@@ -275,9 +275,36 @@ class DonorDashController extends Controller
         //     ];
         // }
         $fdsf=66;
-           $resp = ['anggaran'=>$peatlandRewetting, 'anggaran3'=>$fdsf];
-  return $this->sendData($resp);
+           $resp = ['anggaran'=>$peatlandRewetting, 'anggaran'=>$fdsf];
+//         $resp = [];
+//         foreach ($allCost->all() as $p) {
+//             $resp[] = [
+//                 'anggaran' => $p['anggaran'],
+//                 'persen' => $total_anggaran ? 100 * ($p['anggaran']/$total_anggaran ) : 0,
+//                  'province' => $p['province']->long_name,
+//             ];
+//         }
+   return $this->sendData($resp);
 //        return $this->sendData($resp);
+    }
+    public function peatlandrewetting(){
+        // $model = new DonorDash;
+        // $peatlandRewetting = DB::table('donor_activities')->sum('amount');
+        // $peatlandRewetting =  DonorDash::select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+        //                 ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+        //                 ->where('mandat_id', 1)
+        //                 ->groupBy('province_id')->get()->toArray();
+        $peatlandRewetting =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+        ->where('mandat_id', 1)
+        ->groupBy('province_id')->first();
+        // $dsds=2323;
+        $collection=collect($peatlandRewetting)->max();
+    //    $cek= $collection->collapse();
+    //     $dsd='anggaran';
+        $respi = ['anggaran'=>$collection];
+        return $this->sendData($respi);
+
     }
     public function berdasarkegiatan()
     {
