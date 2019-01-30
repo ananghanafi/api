@@ -27,6 +27,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/donor-mapping', 'DonorActivityController@index')->name('donor-activity');
 Route::get('/donor-report', 'DonorActivityController@report')->name('donor-report');
+Route::get('/add-donor-activity', 'DonorActivityController@activity')->name('add-donor-activity');
+Route::get('/add-donor-activity', 'DonorActivityController@store')->name('add-donor-activity');
 Route::post('/add-donor', 'DonorOrganizationsController@store')->name('add-donor');
 Route::get('/add-donor', 'DonorOrganizationsController@index')->name('add-donor');
 // Route::get('/anggaran', 'DonorActivityController@anggaran')->name('anggaran');

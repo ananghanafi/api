@@ -12,6 +12,7 @@
                         <li><a href="{{url('/donor-mapping')}}">Donor Activity</a></li>
                         <li><a href="{{url('/donor-report')}}">Report<a></li>
                         <li><a href="{{url('/add-donor')}}">Tambah Donor</a></li>
+                        <li><a href="{{url('/add-donor-activity')}}">Tambah Activity</a></li>
                     </ul>
                 </div>
             </div>

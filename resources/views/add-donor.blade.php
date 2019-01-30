@@ -12,6 +12,7 @@
                         <li><a href="{{url('/donor-mapping')}}">Donor Activity</a></li>
                         <li><a href="{{url('/donor-report')}}">Report<a></li>
                         <li><a href="{{url('/add-donor')}}">Tambah Donor</a></li>
+                        <li><a href="{{url('/add-donor-activity')}}">Tambah Activity</a></li>
                     </ul>
                 </div>
             </div>
@@ -30,32 +31,75 @@
                         {{ csrf_field() }}
                         {{ method_field('post') }}
                             <div >
-                                    <label for="Tittle" class="col-md-4 control-label">Tittle</label>
+                                    <label for="Country" class="col-md-4 control-label">Country</label>
                                     <div class="col-md-6">
-                                        <input id="title" type="text" class="form-control" name="tittle" value="{{ old('title') }}" autofocus>
+                                        <input id="country" type="text" class="form-control" name="country" value="{{ old('country') }}" autofocus>
                                         <!-- @if ($errors->has('tittle'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('tittle') }}</strong>
                                             </span>
                                         @endif -->
                                     </div>
+                            </div>
                             <div>
-                                    <label for="Amount" class="col-md-4 control-label">Amount</label>
+                                    <label for="Nama" class="col-md-4 control-label">Name of Institution</label>
                                     <div class="col-md-6">
-                                        <input id="amount" type="number" class="form-control" name="amount" value="{{ old('amount') }}" autofocus>
+                                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
                                         <!-- @if ($errors->has('amount'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('amount') }}</strong>
                                             </span>
                                         @endif -->
                                     </div>
-                                    <div class="form-group">
+                            </div>
+                            <div>
+                                    <label for="upload" class="col-md-4 control-label">Upload Logo</label>
+                                    <div class="col-md-6">
+                                        <input id="upload" type="file" class="form-control" name="upload[]" value="{{ old('upload') }}" >
+                                        <!-- @if ($errors->has('amount'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('amount') }}</strong>
+                                            </span>
+                                        @endif -->
+                                    </div>
+                            </div>
+                            <div>
+                                    <label for="key" class="col-md-4 control-label">Key Activity</label>
+                                    <div class="col-md-6">
+                                    <select class="form-control input-sm" name="key">
+                                        <option value="{{ old('key') }}">National NGO</option>
+                                        <option value="{{ old('key') }}">International NGO</option>
+                                        <option value="{{ old('key') }}">Bilateral</option>
+                                        <option value="{{ old('key') }}">Trust Fund</option>
+                                        <option value="{{ old('key') }}">University</option>
+                                        <option value="{{ old('key') }}">Implementing Partner/Contractor</option>
+                                        <option value="{{ old('key') }}">Government</option>
+                                        <option value="{{ old('key') }}">Development Bank</option>
+                                        <option value="{{ old('key') }}">Research Center</option>
+                                        <option value="{{ old('key') }}">Institution</option>
+                                        <option value="{{ old('key') }}">Konsorsium</option>
+                                        <option value="{{ old('key') }}">Multilateral</option>
+                                        <option value="{{ old('key') }}">Other</option>
+                                    </select>
+                                    </div>
+                            </div>
+                            <div>
+                                    <label for="focal" class="col-md-4 control-label">Focal Point to BRG</label>
+                                    <div class="col-md-6">
+                                        <input id="focal" type="text" class="form-control" name="focal" value="{{ old('focal') }}" autofocus>
+                                        <!-- @if ($errors->has('amount'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('amount') }}</strong>
+                                            </span>
+                                        @endif -->
+                                    </div>
+                            </div>
+                            <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Kirim
                                 </button>
                             </div>
-                        </div>
                     </form>
                     </div>
                     </div>
