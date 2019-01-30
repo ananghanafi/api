@@ -254,12 +254,12 @@ $dbBrgMandat = DB::table('m_brg_mandat')->select('m_brg_mandat.id','desc_en')->g
         $collection = collect([$peatlandRewetting, $revegetation, $revitalization, $baseStabilization, $instStrengthening, $coopImprove, $actifRoles, $peatlandRestoration, $adminstrartionManagement ]);
         $allCost = $collection->collapse();
         $prov = [];
-        $cek="";
+      //  $cek="";
         $total_anggaran = 0;
         foreach ($allCost->all() as $ang){
-          if('mandat_id'==1){
-              $cek = "gg";
-          }
+        //   if('mandat_id'==1){
+        //       $cek = "gg";
+        //   }
             // $province_id = $ang['administrative_area']['province']->province_id;
             // $prov[$province_id] = [
             //     'anggaran' => (isset($prov[$province_id]['anggaran']) ? $prov[$province_id]['anggaran'] : 0) + $ang['amount'],
@@ -277,7 +277,7 @@ $dbBrgMandat = DB::table('m_brg_mandat')->select('m_brg_mandat.id','desc_en')->g
         //     ];
         // }
         //  $peatlandRewettin = DB::table('donor_activities')->select(DB::raw('SUM(amount) as anggaran'), 'province_id' )->get();
-  return $this->sendData($cek);
+  return $this->sendData($peatlandRewetting);
 //        return $this->sendData($resp);
     }
     public function berdasarkegiatan()
