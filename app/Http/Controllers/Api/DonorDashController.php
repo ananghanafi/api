@@ -64,6 +64,20 @@ class DonorDashController extends Controller
         DB::commit();
         return $this->show($new->id);
     }
+
+    public function storeorg(){
+        $model = new Organisasi;
+        $validator = Validator::make($request->all(), $model->getRule());
+        if ($validator->fails()) {
+            return $this->sendError($validator->errors()->toArray());
+        }
+
+        $new = $model->add($request);
+        if (!$new) {
+            return $this->sendError("Gagal Simpan");
+        }
+        return $this->show($new->id);
+    }
     
     public function update($id,Request $request) {
         $model = new DonorDash;
@@ -400,18 +414,53 @@ class DonorDashController extends Controller
 
             $resp[] = [ 'name' => $v->short_name, 'value' => $value ];
         }
-        // return json_encode($resp);
-        return json_encode($resp);
+         return json_encode($resp);
+        
+        //return json_encode($setProv);
     }
-    public function berdasarkegiatan()
+    public function totalkegiatan()
     {
-        $berdasarKegiatan =  DB::table('donor_activities')->select('donor_activities.id','province_id',DB::raw('COUNT(status) as status') )
-        ->groupBy('province_id')->first();
-        $collection=collect($berdasarKegiatan)->toArray()
-        ->only('status')
-        ->all();
-        $respii = ['status'=>$collection];
-        return $this->sendData($respii);
+        $berdasarKegiatan =  DB::table('donor_activities')
+        ->select('donor_activities.id','province_id',DB::raw('COUNT(status) as status') )
+        ->where('status',1)->first();
+        $collection=collect($berdasarKegiatan)->max();
+        $resp = ['status'=>$collection];
+        return $this->sendData($resp);
+    }
+    public function costKegiatan()
+    {
+        $setMandat = DB::table('donor_activity_brg_mandat')
+            ->select(DB::raw('COUNT(mandat_id) as mandat'),'mandat_id')
+            ->groupBy('mandat_id')->get();
+
+        $targetedMandat = DB::table('m_brg_mandat')->select('desc_en')->get();
+
+
+
+         $collection = collect([$setMandat])->collapse();
+
+        $totalMandat = $collection->groupBy('mandat_id')->map(function ($item) {
+            return $item->sum(function ($item) {
+                return $item->mandat;
+            });
+        });
+
+   
+          $resp = [];
+
+        // for($i=1; $i < 10; $i++){
+
+        //     $resp[] = [ 'name' => $i->desc_en, 'value' => 3];
+        // }
+
+        foreach ($targetedMandat as $k => $v) {
+            $value = isset($totalMandat[$v->mandat_id]) ? $totalMandat[$v->mandat_id] : null;
+            $total[$v->desc_en] = $value;
+
+            $resp[] = [ 'name' => $v->desc_en, 'value' => $value ];
+        }
+      //  return json_encode($resp);
+        return json_encode($resp);
     }
     public function berdasarWil()
     {
@@ -527,29 +576,7 @@ class DonorDashController extends Controller
         ]'; 
         return $data;
     } 
-    public function totalcost()
-    {
-        // $wellPlan = DB::table('construction_plan')->sum('cost');
-        // $canalBlockPlan = DB::table('canal_block_plans')->sum('cost');
-        // $canalHoardingPlan = DB::table('canal_hoarding_plans')->sum('cost');
-        // $retentionBasinPlan = DB::table('retention_basin_plans')->sum('cost');
-        // $revegetationPlan = DB::table('revegetation_plans')->sum('cost');
-        // $revitalizationPlan = DB::table('revitalization_plans')->sum('cost');
 
-        // $total = collect([$wellPlan, $canalBlockPlan, $canalHoardingPlan, $retentionBasinPlan,
-        //     $revegetationPlan, $revitalizationPlan])->sum();
-
-        // $resp = [ 'totalCost' => $total ];
-
-        // return $this->sendData($resp);
-$peatlandRewetting =  DB::table('donor_activities')->sum('amount');
-$peatlandRewetting2 =  DB::table('donor_activities')->sum('amount');
-$total = collect([$peatlandRewetting, $peatlandRewetting2])->sum()->get();
-
-        $resp = [ 'totalcost' => $total];
-
-         return $this->sendData($resp);
-    }
     
     public function costByFundingSource()
     {
@@ -623,15 +650,7 @@ $total = collect([$peatlandRewetting, $peatlandRewetting2])->sum()->get();
         return $this->sendData($resp);
     }
 
-    public function costKegiatan()
-    {
-        $berdasarKegiatan =  DB::table('donor_activities')
-        ->select('donor_activities.id','province_id',DB::raw('COUNT(status) as status') )
-        ->where('status',1)->first();
-        $collection=collect($berdasarKegiatan)->max();
-        $resp = ['status'=>$collection];
-        return $this->sendData($resp);
-    }
+
 
     public function totalAction()
     {
