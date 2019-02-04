@@ -427,6 +427,14 @@ class DonorDashController extends Controller
         $resp = ['status'=>$collection];
         return $this->sendData($resp);
     }
+    public function totallembaga()
+    {
+        $lembaga =  DB::table('organisasi')
+        ->select('id',DB::raw('COUNT(id) as id') )->first();
+        $collection=collect($lembaga)->max();
+        $resp = ['id'=>$collection];
+        return $this->sendData($resp);
+    }
     public function costKegiatan()
     {
         $setMandat = DB::table('donor_activity_brg_mandat')
