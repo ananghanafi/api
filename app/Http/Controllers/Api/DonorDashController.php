@@ -627,11 +627,10 @@ $total = collect([$peatlandRewetting, $peatlandRewetting2])->sum()->get();
     {
         $berdasarKegiatan =  DB::table('donor_activities')
         ->select('donor_activities.id','province_id',DB::raw('COUNT(status) as status') )
-        ->where('status',1)
-        ->groupBy('province_id')->first();
+        ->where('status',1)->first();
         $collection=collect($berdasarKegiatan)->max();
-        $respiii = ['status'=>$collection];
-        return $this->sendData($respiii);
+        $resp = ['status'=>$collection];
+        return $this->sendData($resp);
     }
 
     public function totalAction()
