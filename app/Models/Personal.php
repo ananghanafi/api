@@ -51,6 +51,7 @@ class Personal extends Model
     }
     
     
+    
     public function ubah($params,$id) {
         $data = [];
         foreach ($this->getFillable() as $field) {

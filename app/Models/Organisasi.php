@@ -19,4 +19,10 @@ class Organisasi extends Model
         'focal',
     ];
     protected $timestimp= true;
+    private $rule_validate = [
+        'name' => 'required',
+        'country' => 'required',
+        'key' => 'required',
+        'focal' => 'required',
+    ];
 }

@@ -291,7 +291,7 @@ Route::group(['middleware' => ['auth:api','permission']], function () {
     Route::delete('person/{id}', ['as' => 'permission.person.delete', 'uses' => 'Api\PersonController@delete']);
 
     Route::get('personal',['as' => 'permission.personal.index','uses'=>'Api\PersonalController@index']);
-    Route::post('personal/store',['as' => 'permission.personal.store','uses'=>'Api\PersonalController@store']);
+    Route::post('personal',['as' => 'permission.personal.store','uses'=>'Api\PersonalController@store']);
     Route::get('personal/{id}',['as' => 'permission.personal.show','uses'=>'Api\PersonalController@show']);
     Route::put('personal/{id}',['as' => 'permission.personal.update','uses'=>'Api\PersonalController@update']);
     Route::delete('personal/{id}',['as' => 'permission.personal.delete','uses'=>'Api\PersonalController@delete']);
@@ -339,5 +339,11 @@ Route::group(['middleware' => ['auth:api','permission']], function () {
 //     Route::put('donordash/{id}', ['as' => 'permission.donordash.update', 'uses' => 'Api\DonorDashController@update']);
 // //    Route::delete('donoractivities/{id}', ['as' => 'permission.donoractivities.delete', 'uses' => 'Api\DonorActivityController@delete']);
 //     Route::put('donordash/{id}/status', ['as' => 'permission.donordash.updatestatus', 'uses' => 'Api\DonorDashController@updateStatus']);
+
+        Route::get('organisasi',['as' => 'permission.organisasi.index','uses'=>'Api\OrganisasiController@index']);
+        Route::post('organisasi',['as' => 'permission.organisasi.store','uses'=>'Api\OrganisasiController@store']);
+        Route::get('organisasi/{id}',['as' => 'permission.organisasi.show','uses'=>'Api\OrganisasiController@show']);
+        Route::put('organisasi/{id}',['as' => 'permission.organisasi.update','uses'=>'Api\OrganisasiController@update']);
+        Route::delete('organisasi/{id}',['as' => 'permission.organisasi.delete','uses'=>'Api\OrganisasiController@delete']);
 });
 
