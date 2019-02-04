@@ -647,39 +647,39 @@ $total = collect([$peatlandRewetting, $peatlandRewetting2])->sum()->get();
         // $setProv = DB::table('donor_activity_brg_mandat')
         // ->select('mandat_id', DB::raw('sum(amount) as cost'))
         // ->groupBy('province_id')->whereNotNull('amount')->get();
- $peatlandRewetting =  DonorDash::select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+ $peatlandRewetting =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('COUNT(amount) as anggaran'),'donor_activities.currency' )
                         ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
                         ->where('mandat_id', 1)
-                        ->groupBy('province_id')->count();
-$revegetation =  DonorDash::select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency')
+                        ->groupBy('province_id')->get();
+$revegetation =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('COUNT(amount)as anggaran'),'donor_activities.currency')
                         ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
                         ->where('mandat_id', 2)
                         ->groupBy('province_id')->count();
-$revitalization =  DonorDash::select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency')
+$revitalization =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('COUNT(amount)as anggaran'),'donor_activities.currency')
                         ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
                         ->where('mandat_id', 3)
                         ->groupBy('province_id')->count();
-$baseStabilization =  DonorDash::select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency')
+$baseStabilization =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('COUNT(amount)as anggaran'),'donor_activities.currency')
                         ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
                         ->where('mandat_id', 4)
                         ->groupBy('province_id')->count();
-$instStrengthening =  DonorDash::select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency')
+$instStrengthening =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('COUNT(amount)as anggaran'),'donor_activities.currency')
                         ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
                         ->where('mandat_id', 5)
                         ->groupBy('province_id')->count();
-$coopImprove =  DonorDash::select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency')
+$coopImprove =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('COUNT(amount)as anggaran'),'donor_activities.currency')
                         ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
                         ->where('mandat_id', 6)
                         ->groupBy('province_id')->count();
-$actifRoles =  DonorDash::select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency')
+$actifRoles =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('COUNT(amount)as anggaran'),'donor_activities.currency')
                         ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
                         ->where('mandat_id', 7)
                         ->groupBy('province_id')->count();
-$peatlandRestoration =  DonorDash::select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency')
+$peatlandRestoration =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('COUNT(amount)as anggaran'),'donor_activities.currency')
                         ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
                         ->where('mandat_id', 8)
                         ->groupBy('province_id')->count();
-$adminstrartionManagement =  DonorDash::select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency')
+$adminstrartionManagement =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('COUNT(amount)as anggaran'),'donor_activities.currency')
                         ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
                         ->where('mandat_id', 9)
                         ->groupBy('province_id')->count();
@@ -694,26 +694,26 @@ $adminstrartionManagement =  DonorDash::select('donor_activities.id','donor_acti
 
     //  $collection = collect([$setProv])->collapse();
 
-    $totalFunding = $collection->groupBy('province_id')->map(function ($item) {
-        return $item->sum(function ($item) {
-            return $item->cost;
-        });
-    });
+    // $totalFunding = $collection->groupBy('province_id')->map(function ($item) {
+    //     return $item->sum(function ($item) {
+    //         return $item->cost;
+    //     });
+    // });
 
     // $total = [];
     // foreach(){
         
     // }
-     $resp = [];
+    //  $resp = [];
 
-     foreach ($target as $k => $v) {
-         $value = isset($totalFunding[$v->province_id]) ? $totalFunding[$v->province_id] : null;
-         $total[$v->short_name] = $value;
+    //  foreach ($target as $k => $v) {
+    //      $value = isset($totalFunding[$v->province_id]) ? $totalFunding[$v->province_id] : null;
+    //      $total[$v->short_name] = $value;
 
-        $resp[] = [ 'name' => $v->short_name, 'value' => $value ];
-    }
+    //     $resp[] = [ 'name' => $v->short_name, 'value' => $value ];
+    // }
     // return json_encode($resp);
-    return json_encode( $collection);
+    return json_encode(  $peatlandRewetting);
     }
 
     public function totalAction()
