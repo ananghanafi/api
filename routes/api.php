@@ -331,7 +331,7 @@ Route::group(['middleware' => ['auth:api','permission']], function () {
        Route::get('/donordash/administrartionManagement', ['as' => 'permission.donordash.administrartionManagement', 'uses' => 'Api\DonorDashController@administrartionManagement']);
        Route::get('/donordash/costByProvince', ['as'=>'permission.donordash.costByProvince', 'uses'=>'Api\DonorDashController@costByProvince']);
         Route::get('/donordash/costByProvince', ['as'=>'permission.donordash.costByProvince', 'uses'=>'Api\DonorDashController@costByProvince']);
-       Route::get('/donordash/costKegiatan', ['as'=>'permission.donordash.costKegiatan', 'uses'=>'Api\DonorDashController@costKegiatan']);
+       Route::get('/donordash/costByActivity', ['as'=>'permission.donordash.costByActivity', 'uses'=>'Api\DonorDashController@costByActivity']);
        Route::get('/donordash/totallembaga', ['as'=>'permission.donordash.totallembaga', 'uses'=>'Api\DonorDashController@totallembaga']);
        Route::get('/donordash/totalkegiatan', ['as' => 'permission.donordash.totalkegiatan', 'uses' => 'Api\DonorDashController@totalkegiatan']);
 
