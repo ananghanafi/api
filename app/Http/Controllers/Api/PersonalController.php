@@ -19,7 +19,7 @@ class PersonalController extends Controller
         if($request->s){
             $model->whereNama($request->s);
         }
-        $model->where('isDeleted',0);
+        // $model->where('isDeleted',0);
         return $this->sendData($model->paginate(10));
     }
     
@@ -79,7 +79,7 @@ class PersonalController extends Controller
             return $this->sendError("Data tidak ada");
         }
         $obj = new  \stdClass;
-        $obj->isDeleted = 1;
+        // $obj->isDeleted = 1;
         $obj->id = $id;
         $model->ubah($obj,$id);
         return $this->sendData(['message' => 'Berhasil Hapus']);

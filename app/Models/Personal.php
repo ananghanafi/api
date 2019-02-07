@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\ModelTrait;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Traits\ApilibUserTrait;
 
 class Personal extends Model
 {
@@ -44,8 +48,8 @@ class Personal extends Model
             }
         }
         $data['api_token'] = md5($params->email);
-        $data['isActive'] = 1;
-        $data['isDeleted'] = 0;
+        // $data['isActive'] = 1;
+        // $data['isDeleted'] = 0;
         $new = $this->create($data);
         return $new;
     }
