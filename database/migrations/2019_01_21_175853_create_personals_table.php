@@ -18,8 +18,8 @@ class CreatePersonalsTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('jenis');
-            $table->string('tanggal');
-            $table->string('jmlanggota');
+            $table->date('tanggal');
+            $table->integer('jmlanggota');
             $table->string('admin');
             $table->string('password');
             $table->rememberToken();

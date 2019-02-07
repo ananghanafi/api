@@ -31,9 +31,9 @@ class Personal extends Model
     ];
     
     private $rule_validate = [
-        'name' => 'required',
-        'email' => 'required|email',
-        'password' => 'required',
+        'name' => '',
+        'email' => '',
+        'password' => '',
 
     ];
     protected $appends = ['work_scope'];
