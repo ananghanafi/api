@@ -31,9 +31,9 @@ class Personal extends Model
     ];
     
     private $rule_validate = [
-        'name' => '',
-        'email' => '',
-        'password' => '',
+        'name' => 'required',
+        'email' => 'required',
+        'password' => 'required',
 
     ];
     protected $appends = ['work_scope'];
@@ -54,7 +54,25 @@ class Personal extends Model
         return $new;
     }
     
-    
+    public function getWorkScopeAttribute($value)
+    {
+        $work_scope = [
+            'kota_id' => 0,
+            'provinsi_id' => 0,
+        ];
+        // $ret = $this->person;
+        // if(isset($ret->organization)){
+        //     foreach ($ret->organization as $org) {
+        //         if($org->work_scope == 'provinsi'){
+        //             $work_scope['provinsi_id'] = $org->area_id;
+        //         }else if($org->work_scope == 'kota'){
+        //             $work_scope['kota_id'] = $org->area_id;
+        //         }
+        //     };
+        // }
+        
+        return $work_scope;
+    }
     
     public function ubah($params,$id) {
         $data = [];

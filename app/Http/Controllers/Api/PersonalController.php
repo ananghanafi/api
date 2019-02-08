@@ -19,9 +19,10 @@ class PersonalController extends Controller
         if($request->s){
             $model->whereNama($request->s);
         }
-        // $model->where('isDeleted',0);
+      //  $model->where('isDeleted',0);
         return $this->sendData($model->paginate(10));
     }
+    
     
     public function store(Request $request) {
         $model = new Personal;
