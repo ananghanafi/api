@@ -80,7 +80,7 @@ class PersonalController extends Controller
             return $this->sendError("Data tidak ada");
         }
         $obj = new  \stdClass;
-        // $obj->isDeleted = 1;
+        $obj->isDeleted = 1;
         $obj->id = $id;
         $model->ubah($obj,$id);
         return $this->sendData(['message' => 'Berhasil Hapus']);

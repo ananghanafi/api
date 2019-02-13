@@ -245,9 +245,9 @@ class DonorDashController extends Controller
 //                         ->where('mandat_id', 4)
 //                         ->groupBy('province_id')->get()->toArray();
 // $instStrengthening =  DonorDash::select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency')
-//                         ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
-//                         ->where('mandat_id', 5)
-//                         ->groupBy('province_id')->get()->toArray();
+                        // ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+                        // ->where('mandat_id', 5)
+                        // ->groupBy('province_id')->get()->toArray();
 // $coopImprove =  DonorDash::select('donor_activities.id','donor_activities.amount','donor_activities.province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency')
 //                         ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
 //                         ->where('mandat_id', 6)
@@ -265,7 +265,7 @@ class DonorDashController extends Controller
 //                         ->where('mandat_id', 9)
 //                         ->groupBy('province_id')->get()->toArray();
 // $dbBrgMandat = DB::table('m_brg_mandat')->select('m_brg_mandat.id','desc_en')->get();
-//         $collection = collect([$peatlandRewetting, $revegetation, $revitalization, $baseStabilization, $instStrengthening, $coopImprove, $actifRoles, $peatlandRestoration, $adminstrartionManagement ]);
+//        $collection = collect([$peatlandRewetting, $revegetation, $revitalization, $baseStabilization, $instStrengthening, $coopImprove, $actifRoles, $peatlandRestoration, $adminstrartionManagement ]);
 //         $allCost = $collection->collapse();
 //         $prov = [];
       //  $cek="";
@@ -370,7 +370,7 @@ class DonorDashController extends Controller
         $respi = ['anggaran'=>$collection];
         return $this->sendData($respi);
     }
-    public function instSrengthening(){
+    public function instStrengthening(){
         // $peatlandRewetting =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
         // ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
         // ->where('mandat_id', 5)
