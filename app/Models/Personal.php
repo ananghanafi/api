@@ -48,8 +48,8 @@ class Personal extends Model
             }
         }
         $data['api_token'] = md5($params->email);
-        $data['isActive'] = 1;
-        $data['isDeleted'] = 0;
+        // $data['isActive'] = 1;
+        // $data['isDeleted'] = 0;
         $new = $this->create($data);
         return $new;
     }
@@ -91,8 +91,8 @@ class Personal extends Model
         return $new;
     }
     
-    public function person()
-    {
-        return $this->hasOne(\App\Models\Person::class);
-    }
+    // public function person()
+    // {
+    //     return $this->hasOne(\App\Models\Person::class);
+    // }
 }
