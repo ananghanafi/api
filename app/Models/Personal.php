@@ -91,6 +91,14 @@ class Personal extends Model
         return $new;
     }
     
+    // public function jenis()
+    // {
+    //     return $this->belongsToMany(\App\Models\Jenis::class,'donor_activity_brg_mandat','project_id','mandat_id');
+    // }
+    // public function admin()
+    // {
+    //     return $this->belongsToMany(\App\Models\Admin::class,'donor_activity_brg_mandat','project_id','mandat_id');
+    // }
     // public function person()
     // {
     //     return $this->hasOne(\App\Models\Person::class);

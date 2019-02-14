@@ -17,10 +17,10 @@ class CreatePersonalsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('jenis');
+            $table->integer('jenis');
             $table->date('tanggal');
             $table->integer('jmlanggota');
-            $table->string('admin');
+            $table->integer('admin');
             $table->string('password');
             $table->rememberToken();
             $table->string('api_token');
