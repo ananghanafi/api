@@ -13,13 +13,28 @@ class JenisTableSeeder extends Seeder
     {
         DB::table('jenis')->insert([
             'id' => 1,
-            'jenis_id' => 'Pembasahan Gambut',
-            'jenis_en' => 'Peatland Rewetting',
+            'jenis_id' => 'Lembaga',
+            'jenis_en' => 'Institution',
         ]);
         DB::table('jenis')->insert([
             'id' => 2,
-            'jenis_id' => 'Rehabilitasi Vegetasi (Revegetasi)',
-            'jenis_en' => 'Vegetation Rehabilitation (Revegetation)',
+            'jenis_id' => 'Instansi',
+            'jenis_en' => 'Agency',
+        ]);
+        DB::table('jenis')->insert([
+            'id' => 3,
+            'jenis_id' => 'Universitas',
+            'jenis_en' => 'University',
+        ]);
+        DB::table('jenis')->insert([
+            'id' => 4,
+            'jenis_id' => 'Organisasi',
+            'jenis_en' => 'Organization',
+        ]);
+        DB::table('jenis')->insert([
+            'id' => 5,
+            'jenis_id' => 'Institusi',
+            'jenis_en' => 'Institution',
         ]);
     }
 }
