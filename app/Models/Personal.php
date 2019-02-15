@@ -44,7 +44,7 @@ class Personal extends Model
             if($field == 'password'){
                 $data[$field] = bcrypt($params->{$field});
             }
-            elseif($field == 'jenis'){
+           if($field == 'jenis'){
                 $data[$field] = $params->{$field};
                 if($params->{$field} == 1){
                     $data[$field] = "Lembaga";
@@ -58,7 +58,8 @@ class Personal extends Model
                     $data[$field] = "Institusi";
                 }
                
-            }elseif($field == 'admin'){
+            }
+            if($field == 'admin'){
                 if($params->{$field} == 1){
                     $data[$field] = "Provinsi";
                 }elseif($params->{$field} == 2){
