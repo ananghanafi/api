@@ -8,8 +8,6 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Traits\ApilibUserTrait;
-use App\Models\Admin;
-use App\Models\Jenis;
 
 class Personal extends Model
 {
@@ -45,7 +43,9 @@ class Personal extends Model
         foreach ($this->getFillable() as $field) {
             if($field == 'password'){
                 $data[$field] = bcrypt($params->{$field});
-            }elseif($field == 'jenis'){
+            }
+            elseif($field == 'jenis'){
+                $data[$field] = $params->{$field};
                 if($params->{$field} == 1){
                     $data[$field] = "Lembaga";
                 }elseif($params->{$field} == 2){
@@ -59,7 +59,7 @@ class Personal extends Model
                 }
                
             }elseif($field == 'admin'){
-                if($params->{$field}== 1){
+                if($params->{$field} == 1){
                     $data[$field] = "Provinsi";
                 }elseif($params->{$field} == 2){
                     $data[$field] = "Kabupaten/Kota";
@@ -68,6 +68,7 @@ class Personal extends Model
                 }elseif($params->{$field} == 4){
                     $data[$field] = "Kelurahan";
                 }
+                $data[$field] = $params->{$field};
             }
             else{
                 $data[$field] = $params->{$field};
@@ -76,7 +77,7 @@ class Personal extends Model
         $data['api_token'] = md5($params->email);
         // $data['isActive'] = 1;
         // $data['isDeleted'] = 0;
-        $new = $this->update($data);
+        $new = $this->create($data);
         return $new;
     }
     public function tampil(){
@@ -135,14 +136,14 @@ class Personal extends Model
     }
 
     
-    public function jenis()
-    {
-        return $this->hasOne(\App\Models\Jenis::class);
-    }
-    public function admin()
-    {
-        return $this->hasOne(\App\Models\Admin::class);
-    }
+    // public function jenis()
+    // {
+    //     return $this->hasOne(\App\Models\Jenis::class);
+    // }
+    // public function admin()
+    // {
+    //     return $this->hasOne(\App\Models\Admin::class);
+    // }
     // public function person()
     // {
     //     return $this->hasOne(\App\Models\Person::class);
