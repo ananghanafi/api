@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\ModelTrait;
 
-class ImplStatus extends Model {
+class Jenis extends Model {
     use ModelTrait;
     
-    protected $table = 'm_impl_statuses';
+    protected $table = 'jenis';
     protected $fillable = [
-        'status',
-        'remark',
+        'jenis_id',
+        'jenis_en',
     ];
     public $timestamps = false;
     
-    private $rule_validate = [
-        'status' => 'required',
-        'remark' => 'required',
-    ];
+    // private $rule_validate = [
+    //     'status' => 'required',
+    //     'remark' => 'required',
+    // ];
     
 }

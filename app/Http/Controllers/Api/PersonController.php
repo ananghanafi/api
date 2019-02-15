@@ -68,5 +68,6 @@ class PersonController extends Controller
         $model->ubah($data,$id);
         return $this->sendData(['message' => 'Berhasil Hapus']);
     }
+  
     
 }

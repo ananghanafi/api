@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Traits\ControllerTrait;
 use App\Models\Personal;
+use DB;
 use Validator;
 
 class PersonalController extends Controller
@@ -19,6 +20,9 @@ class PersonalController extends Controller
         if($request->s){
             $model->whereNama($request->s);
         }
+        // $model = $model->with(['admin','jenis']);
+        // $model->tampil();
+        // return $this->show($model->paginate(10));
       //  $model->where('isDeleted',0);
         return $this->sendData($model->paginate(10));
     }
@@ -80,9 +84,71 @@ class PersonalController extends Controller
             return $this->sendError("Data tidak ada");
         }
         $obj = new  \stdClass;
-        $obj->isDeleted = 1;
+        // $obj->isDeleted = 1;
         $obj->id = $id;
         $model->ubah($obj,$id);
         return $this->sendData(['message' => 'Berhasil Hapus']);
+    }
+    public function tampil(Request $request){
+        $model = new Personal;
+        if($request->s){
+            $model->whereNama($request->s);
+        }
+        $model->tampil();
+
+        $dd = $this->sendData($model->paginate(15));
+        
+        return  $dd;
+        // return $this->sendData($model->paginate(15));
+    }
+    public function listuser(){
+        $ss= $this->getFillable();
+        $setData= Personal::select('name','admin','jenis','jmlanggota','email',DB::raw('COUNT(email) as panjang'))->get();
+        $setDataCount = DB::table('personals')->count();
+
+        // $targetedAdmin = DB::table('admin')->get();
+        // $targetedJenis = DB::table('jenis')->get();
+ 
+       // $collection = collect([$totalFunding])->collapse();
+
+       $collection = collect([$setData])->collapse();
+    //    foreach($collection as $collection){
+    //        $ss=[$collection->name];
+    //    }
+        // $item = $setDataCount;
+        // $setDataCount = $collection->map(function ($item) {
+        //     return $item->panjang;
+        // });
+
+        // $total = [];
+        // foreach(){
+            $setData5 = DB::table('personals')
+            ->select('email')->get();
+
+        // }
+        $resp = [];
+        for($i=1; $i<($setDataCount+1) ;$i++){
+            $targetedAdmin = DB::table('admin')->select('admin_id')->get();
+            $targetedJenis = DB::table('jenis')->select('jenis_id')->get();
+            $setData1 = DB::table('personals')
+            ->select('name')->get();
+            $setData2 = DB::table('personals')
+            ->select('admin')->get();
+            $setData3 = DB::table('personals')
+            ->select('jenis')->get();
+            $setData4 = DB::table('personals')
+            ->select('jmlanggota')->get();
+            $setData5 = DB::table('personals')
+            ->select('email')->get();
+
+            ${'coll'.$i}=collect($targetedAdmin)->max();
+            ${'col'.$i}=collect($setData1)->max();
+            $resp[]= [${'coll'.$i}, ${'col'.$i}] ;
+            }
+        
+
+
+        //  return json_encode($resp);
+        return json_encode($ss);
     }
 }
