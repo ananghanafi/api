@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\ModelTrait;
 
-class MBrgMandat extends Model {
+class Jenis extends Model {
     use ModelTrait;
     
     protected $table = 'jenis';
