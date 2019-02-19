@@ -24,6 +24,7 @@ class CreatePersonalsTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->string('api_token');
+            $table->integer('is_deleted');
             $table->timestamps();
         });
     }

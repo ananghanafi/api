@@ -350,8 +350,10 @@ Route::group(['middleware' => ['auth:api','permission']], function () {
         Route::put('organisasi/{id}',['as' => 'permission.organisasi.update','uses'=>'Api\OrganisasiController@update']);
         Route::delete('organisasi/{id}',['as' => 'permission.organisasi.delete','uses'=>'Api\OrganisasiController@delete']);
 
-        Route::get('admin',['as' => 'permission.admin.index','uses'=>'Api\AdminController@index']);
+        // Route::get('admin',['as' => 'permission.admin.index','uses'=>'Api\AdminController@index']);
 
-        Route::get('jenis',['as' => 'permission.jenis.index','uses'=>'Api\JenisController@index']);
+        // Route::get('jenis',['as' => 'permission.jenis.index','uses'=>'Api\JenisController@index']);
+        Route::get('jenis', ['as' => 'permission.jenis.all', 'uses' => 'Api\JenisController@all']);
+        Route::get('admin', ['as' => 'permission.admin.all', 'uses' => 'Api\AdminController@all']);
 });
 
