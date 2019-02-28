@@ -450,6 +450,131 @@ class DonorDashController extends Controller
         $respi = ['anggaran'=>$collection];
         return $this->sendData($respi);
     }
+    
+    public function khg(){
+        $peatlandRewetting =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+        ->where(function ($query){
+            $query->where('donor_activities.currency','=' ,'1')
+            ->where('mandat_id','=' ,'1');
+        })
+        ->groupBy('province_id')->first();
+        $collection1=collect($peatlandRewetting)->max();
+
+        $revegetation =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+        ->where(function ($query){
+            $query->where('donor_activities.currency','=' ,'1')
+            ->where('mandat_id','=' ,'2');
+        })
+        ->groupBy('province_id')->first();
+        $collection2=collect($revegetation)->max();
+
+        $revitalization =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+        ->where(function ($query){
+            $query->where('donor_activities.currency','=' ,'1')
+            ->where('mandat_id','=' ,'3');
+        })
+        ->groupBy('province_id')->first();
+        $collection3=collect($revitalization)->max();
+
+        $baseStabilization =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+        ->where(function ($query){
+            $query->where('donor_activities.currency','=' ,'1')
+            ->where('mandat_id','=' ,'4');
+        })
+        ->groupBy('province_id')->first();
+        $collection4=collect($baseStabilization)->max();
+
+        $instSrengthening =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+        ->where(function ($query){
+            $query->where('donor_activities.currency','=' ,'1')
+            ->where('mandat_id','=' ,'5');
+        })
+        ->groupBy('province_id')->first();
+        $collection5=collect($instSrengthening)->max();
+
+        $coopImprove =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+        ->where(function ($query){
+            $query->where('donor_activities.currency','=' ,'1')
+            ->where('mandat_id','=' ,'6');
+        })
+        ->groupBy('province_id')->first();
+        $collection6=collect($coopImprove)->max();
+
+        $actifRoles =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+        ->where(function ($query){
+            $query->where('donor_activities.currency','=' ,'1')
+            ->where('mandat_id','=' ,'7');
+        })
+        ->groupBy('province_id')->first();
+        $collection7=collect($actifRoles)->max();
+
+        $peatlandRestoration =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+        ->where(function ($query){
+            $query->where('donor_activities.currency','=' ,'1')
+            ->where('mandat_id','=' ,'8');
+        })
+        ->groupBy('province_id')->first();
+        $collection8=collect($peatlandRestoration)->max();
+
+        $administrationManagement =  DB::table('donor_activities')->select('donor_activities.id','donor_activities.amount','province_id',DB::raw('SUM(amount) as anggaran'),'donor_activities.currency' )
+        ->join('donor_activity_brg_mandat','donor_activity_brg_mandat.project_id','=','donor_activities.id')
+        ->where(function ($query){
+            $query->where('donor_activities.currency','=' ,'1')
+            ->where('mandat_id','=' ,'9');
+        })
+        ->groupBy('province_id')->first();
+        $collection9=collect($administrationManagement)->max();
+     //  $cek = peatlandRewetting();
+    //     $setProv = DB::table('donor_activities')
+    //         ->select('province_id', DB::raw('sum(amount) as cost'))
+    //         ->groupBy('province_id')->whereNotNull('amount')->get();
+
+     //    $targetedMandat = DB::table('m_brg_mandat')->select('desc_en')->get();
+ 
+    // //    $collection = collect([$totalFunding])->collapse();
+
+
+    //      $collection = collect([$setProv])->collapse();
+
+    //     $totalFunding = $collection->groupBy('province_id')->map(function ($item) {
+    //         return $item->sum(function ($item) {
+    //             return $item->cost;
+    //         });
+    //     });
+
+    //     // $total = [];
+    //     // foreach(){
+            
+    //     // }
+         $resp = [];
+
+        //  $targetedMandat = DB::table('m_brg_mandat')->select('desc_en')
+        //  ->where('id',1)->first();
+         for($i=1; $i<10;$i++){
+             
+         $targetedMandat = DB::table('m_brg_mandat')->select('desc_en')
+         ->where('id',$i)->first();
+         ${'coll'.$i}=collect($targetedMandat)->max();
+         $resp [] = [ 'name' => ${'coll'.$i}, 'value' => ${'collection'.$i} ];
+         }
+        //  $data=['data'=>$resp];
+    //     foreach ($targetedProvinces as $k => $v) {
+    //         $value = isset($totalFunding[$v->province_id]) ? $totalFunding[$v->province_id] : null;
+    //         $total[$v->short_name] = $value;
+
+    //         $resp[] = [ 'name' => $v->short_name, 'value' => $value ];
+    //     }
+         return json_encode($resp);
+    }
+   
     public function costByProvince()
     {
         $setProv = DB::table('donor_activities')
