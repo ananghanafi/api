@@ -317,26 +317,27 @@ Route::group(['middleware' => ['auth:api','permission']], function () {
 
     Route::get('donordash', ['as' => 'permission.donordash.index', 'uses' => 'Api\DonorDashController@index']);
     Route::post('donordash', ['as' => 'permission.donordash.store', 'uses' => 'Api\DonorDashController@store']);
-   // Route::get('donordash/{id}', ['as' => 'permission.donordash.show', 'uses' => 'Api\DonorDashController@show']);
+    Route::get('/donordash/anggaran', ['as' => 'permission.donordash.anggaran', 'uses' => 'Api\DonorDashController@anggaran']);
+    Route::get('/donordash/peatlandrewetting', ['as' => 'permission.donordash.peatlandrewetting', 'uses' => 'Api\DonorDashController@peatlandrewetting']);
+    Route::get('/donordash/revegetation', ['as' => 'permission.donordash.revegetation', 'uses' => 'Api\DonorDashController@revegetation']);
+    Route::get('/donordash/revitalization', ['as' => 'permission.donordash.revitalization', 'uses' => 'Api\DonorDashController@revitalization']);
+    Route::get('/donordash/baseStabilization', ['as' => 'permission.donordash.baseStabilization', 'uses' => 'Api\DonorDashController@baseStabilization']);
+    Route::get('/donordash/instStrengthening', ['as' => 'permission.donordash.instStrengthening', 'uses' => 'Api\DonorDashController@instStrengthening']);
+    Route::get('/donordash/coopImprove', ['as' => 'permission.donordash.coopImprove', 'uses' => 'Api\DonorDashController@coopImprove']);
+    Route::get('/donordash/actifRoles', ['as' => 'permission.donordash.actifRoles', 'uses' => 'Api\DonorDashController@actifRoles']);
+    Route::get('/donordash/peatlandRestoration', ['as' => 'permission.donordash.peatlandRestoration', 'uses' => 'Api\DonorDashController@peatlandRestoration']);
+    Route::get('/donordash/administrartionManagement', ['as' => 'permission.donordash.administrartionManagement', 'uses' => 'Api\DonorDashController@administrartionManagement']);
+    Route::get('/donordash/costByProvince', ['as'=>'permission.donordash.costByProvince', 'uses'=>'Api\DonorDashController@costByProvince']);
+     Route::get('/donordash/costByProvince', ['as'=>'permission.donordash.costByProvince', 'uses'=>'Api\DonorDashController@costByProvince']);
+    Route::get('/donordash/costByActivity', ['as'=>'permission.donordash.costByActivity', 'uses'=>'Api\DonorDashController@costByActivity']);
+    Route::get('/donordash/khg', ['as'=>'permission.donordash.khg', 'uses'=>'Api\DonorDashController@khg']);
+    Route::get('/donordash/totallembaga', ['as'=>'permission.donordash.totallembaga', 'uses'=>'Api\DonorDashController@totallembaga']);
+    Route::get('/donordash/totalkegiatan', ['as' => 'permission.donordash.totalkegiatan', 'uses' => 'Api\DonorDashController@totalkegiatan']);
+    Route::get('donordash/{id}', ['as' => 'permission.donordash.show', 'uses' => 'Api\DonorDashController@show']);
     Route::put('donordash/{id}', ['as' => 'permission.donordash.update', 'uses' => 'Api\DonorDashController@update']);
 //    Route::delete('donoractivities/{id}', ['as' => 'permission.donoractivities.delete', 'uses' => 'Api\DonorActivityController@delete']);
     Route::put('donordash/{id}/status', ['as' => 'permission.donordash.updatestatus', 'uses' => 'Api\DonorDashController@updateStatus']);
-       Route::get('/donordash/anggaran', ['as' => 'permission.donordash.anggaran', 'uses' => 'Api\DonorDashController@anggaran']);
-       Route::get('/donordash/peatlandrewetting', ['as' => 'permission.donordash.peatlandrewetting', 'uses' => 'Api\DonorDashController@peatlandrewetting']);
-       Route::get('/donordash/revegetation', ['as' => 'permission.donordash.revegetation', 'uses' => 'Api\DonorDashController@revegetation']);
-       Route::get('/donordash/revitalization', ['as' => 'permission.donordash.revitalization', 'uses' => 'Api\DonorDashController@revitalization']);
-       Route::get('/donordash/baseStabilization', ['as' => 'permission.donordash.baseStabilization', 'uses' => 'Api\DonorDashController@baseStabilization']);
-       Route::get('/donordash/instStrengthening', ['as' => 'permission.donordash.instStrengthening', 'uses' => 'Api\DonorDashController@instStrengthening']);
-       Route::get('/donordash/coopImprove', ['as' => 'permission.donordash.coopImprove', 'uses' => 'Api\DonorDashController@coopImprove']);
-       Route::get('/donordash/actifRoles', ['as' => 'permission.donordash.actifRoles', 'uses' => 'Api\DonorDashController@actifRoles']);
-       Route::get('/donordash/peatlandRestoration', ['as' => 'permission.donordash.peatlandRestoration', 'uses' => 'Api\DonorDashController@peatlandRestoration']);
-       Route::get('/donordash/administrartionManagement', ['as' => 'permission.donordash.administrartionManagement', 'uses' => 'Api\DonorDashController@administrartionManagement']);
-       Route::get('/donordash/costByProvince', ['as'=>'permission.donordash.costByProvince', 'uses'=>'Api\DonorDashController@costByProvince']);
-        Route::get('/donordash/costByProvince', ['as'=>'permission.donordash.costByProvince', 'uses'=>'Api\DonorDashController@costByProvince']);
-       Route::get('/donordash/costByActivity', ['as'=>'permission.donordash.costByActivity', 'uses'=>'Api\DonorDashController@costByActivity']);
-       Route::get('/donordash/khg', ['as'=>'permission.donordash.khg', 'uses'=>'Api\DonorDashController@khg']);
-       Route::get('/donordash/totallembaga', ['as'=>'permission.donordash.totallembaga', 'uses'=>'Api\DonorDashController@totallembaga']);
-       Route::get('/donordash/totalkegiatan', ['as' => 'permission.donordash.totalkegiatan', 'uses' => 'Api\DonorDashController@totalkegiatan']);
+     
 
 //     Route::get('donordash', ['as' => 'permission.donordash.index', 'uses' => 'Api\DonorDashController@index']);
 //     Route::post('donordash', ['as' => 'permission.donordash.store', 'uses' => 'Api\DonorDashController@store']);
