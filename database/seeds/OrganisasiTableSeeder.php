@@ -259,6 +259,77 @@ class OrganisasiTableSeeder extends Seeder
            'key'=>'2323',
            'focal'=> '12',
        ]);
+       DB::table('organisasi')->insert([
+        'id' => 32,
+        'country'=> 'Japan',
+        'name'=> 'Indonesia Climate Change Trust Fund',
+        'upload'=> 'Lembaga',
+        'key'=>'2323',
+        'focal'=> '12',
+        ]);
+        DB::table('organisasi')->insert([
+         'id' => 33,
+         'country'=> 'Japan',
+         'name'=> 'United Nations Development Programme',
+         'upload'=> 'Lembaga',
+         'key'=>'2323',
+         'focal'=> '12',
+         ]);
+       DB::table('organisasi')->insert([
+        'id' => 34,
+        'country'=> 'Japan',
+        'name'=> 'Japan International Cooperation Agency',
+        'upload'=> 'Lembaga',
+        'key'=>'2323',
+        'focal'=> '12',
+        ]);
+        
+       DB::table('organisasi')->insert([
+        'id' => 35,
+        'country'=> 'Japan',
+        'name'=> 'Millenium Challenge Account Indonesia',
+        'upload'=> 'Lembaga',
+        'key'=>'2323',
+        'focal'=> '12',
+        ]);
+        
+       DB::table('organisasi')->insert([
+        'id' => 36,
+        'country'=> 'Japan',
+        'name'=> 'Forum Indonesia Untuk Transparansi Anggaran - Riau',
+        'upload'=> 'Lembaga',
+        'key'=>'2323',
+        'focal'=> '12',
+        ]);
+        
+       DB::table('organisasi')->insert([
+        'id' => 37,
+        'country'=> 'Japan',
+        'name'=> 'Wahana Lingkungan Hidup Indonesia - Sumsel',
+        'upload'=> 'Lembaga',
+        'key'=>'2323',
+        'focal'=> '12',
+        ]);
+        
+       DB::table('organisasi')->insert([
+        'id' => 38,
+        'country'=> 'Japan',
+        'name'=> 'Institute Agroekologi Indonesia',
+        'upload'=> 'Lembaga',
+        'key'=>'2323',
+        'focal'=> '12',
+        ]);
+        
+       DB::table('organisasi')->insert([
+        'id' => 39,
+        'country'=> 'Japan',
+        'name'=> 'World Wide Fund for Nature',
+        'upload'=> 'Lembaga',
+        'key'=>'2323',
+        'focal'=> '12',
+        ]);
+               
+      
 
     }
 }

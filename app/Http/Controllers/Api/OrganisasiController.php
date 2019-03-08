@@ -18,6 +18,7 @@ class OrganisasiController extends Controller
         $model = new Organisasi;
         $filterable = $model->getFillable();
         return $this->sendData($this->paginasi($model, $request, $filterable));
+        // return $this->sendData($this->$model->get());
     }
     
     public function store(Request $request) {
@@ -62,5 +63,10 @@ class OrganisasiController extends Controller
         $exist->delete();
         return $this->sendData(['message' => 'Berhasil Hapus']);
     }
-    
+    public function list(Request $request)
+    {
+        $model = new Organisasi;
+        $filterable = $model->getFillable();
+        return $this->sendData($this->paginasi($model, $request, $filterable));
+    }
 }
