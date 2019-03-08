@@ -739,17 +739,19 @@ class DonorDashController extends Controller
     {
         $berdasarKegiatan =  DB::table('donor_activities')
         ->select('donor_activities.id','province_id',DB::raw('COUNT(status) as status') )
-        ->where('status',1)->first();
-        $collection=collect($berdasarKegiatan)->max();
-        $resp = ['status'=>$collection];
+        ->where('status',1)->count();
+        // $collection=collect($berdasarKegiatan)->first();
+        // $resp = ['status'=>$collection];
+        $resp = ['status'=>$berdasarKegiatan];
         return $this->sendData($resp);
     }
     public function totallembaga()
     {
         $lembaga =  DB::table('organisasi')
-        ->select('id',DB::raw('COUNT(id) as id') )->first();
-        $collection=collect($lembaga)->max();
-        $resp = ['id'=>$collection];
+        ->select('id',DB::raw('COUNT(id) as id') )->count();
+        // $collection=collect($lembaga)->max();
+        // $resp = ['id'=>$collection];
+        $resp = ['id'=>$lembaga];
         return $this->sendData($resp);
     }
     public function costKegiatan()
