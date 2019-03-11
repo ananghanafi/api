@@ -18,6 +18,7 @@ class OrganizationController extends Controller
         $model = new Organizations;
         $filterable = $model->getFillable();
         return $this->sendData($this->paginasi($model, $request, $filterable));
+        // return $this->sendData($this->paginasiku($model, $request, $filterable));
     }
     
     public function store(Request $request) {

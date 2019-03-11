@@ -17,8 +17,13 @@ class OrganisasiController extends Controller
     {
         $model = new Organisasi;
         $filterable = $model->getFillable();
-        return $this->sendData($this->paginasi($model, $request, $filterable));
-        // return $this->sendData($this->$model->get());
+        // $users = DB::table('users')->paginate(15);
+        // return $this->sendData($this->paginasiku($model));
+        return $this->sendData($this->paginasiku($model, $request, $filterable));
+        // return $this->sendData($this->paginasi($model, $request, $filterable));
+
+        // return $this->sendData($model->all());
+        // return response()->json($model->all());
     }
     
     public function store(Request $request) {

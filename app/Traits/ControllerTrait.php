@@ -190,4 +190,10 @@ trait ControllerTrait{
         }
         return $newArray;
     }
+    private function paginasiku($model,$request,$filterable = ['id'],  $paginate = 15)
+    {
+        $this->filter->setFilterables($filterable);
+        $jumlah = $model->count();
+        return $model->filter($this->filter)->paginate($jumlah);
+    }
     }
