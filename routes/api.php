@@ -326,7 +326,7 @@ Route::group(['middleware' => ['auth:api','permission']], function () {
     Route::get('/donordash/coopImprove', ['as' => 'permission.donordash.coopImprove', 'uses' => 'Api\DonorDashController@coopImprove']);
     Route::get('/donordash/actifRoles', ['as' => 'permission.donordash.actifRoles', 'uses' => 'Api\DonorDashController@actifRoles']);
     Route::get('/donordash/peatlandRestoration', ['as' => 'permission.donordash.peatlandRestoration', 'uses' => 'Api\DonorDashController@peatlandRestoration']);
-    Route::get('/donordash/administrartionManagement', ['as' => 'permission.donordash.administrartionManagement', 'uses' => 'Api\DonorDashController@administrartionManagement']);
+    Route::get('/donordash/administrationManagement', ['as' => 'permission.donordash.administrationManagement', 'uses' => 'Api\DonorDashController@administrationManagement']);
     Route::get('/donordash/costByProvince', ['as'=>'permission.donordash.costByProvince', 'uses'=>'Api\DonorDashController@costByProvince']);
      Route::get('/donordash/costByProvince', ['as'=>'permission.donordash.costByProvince', 'uses'=>'Api\DonorDashController@costByProvince']);
     Route::get('/donordash/costByActivity', ['as'=>'permission.donordash.costByActivity', 'uses'=>'Api\DonorDashController@costByActivity']);
