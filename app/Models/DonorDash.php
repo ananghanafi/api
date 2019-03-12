@@ -76,15 +76,22 @@ class DonorDash extends Model implements HasMedia
         return $this->belongsTo(\App\Models\MDonorActivityStatuses::class,'status');
     }
     
+    // public function fundingSource()
+    // {
+    //     return $this->belongsTo(\App\Models\Organizations::class,'funding_source');
+    // }
     public function fundingSource()
     {
-        return $this->belongsTo(\App\Models\Organizations::class,'funding_source');
+        return $this->belongsTo(\App\Models\Organisasi::class,'funding_source');
     }
     
-    
+    // public function implementingAgency()
+    // {
+    //     return $this->belongsTo(\App\Models\Organizations::class,'implementing_agency');
+    // }
     public function implementingAgency()
     {
-        return $this->belongsTo(\App\Models\Organizations::class,'implementing_agency');
+        return $this->belongsTo(\App\Models\Organisasi::class,'implementing_agency');
     }
     
     public function currency()
