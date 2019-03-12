@@ -23,7 +23,7 @@ class PersonalController extends Controller
         // $model = $model->with(['admin','jenis']);
         // $model->tampil();
         // return $this->show($model->paginate(10));
-      //  $model->where('isDeleted',0);
+       $model->where('isDeleted',0);
         return $this->sendData($model->paginate(10));
     }
     
@@ -47,7 +47,8 @@ class PersonalController extends Controller
     
     public function update($id,Request $request) {
         $model = new Personal;
-        $exist = $model->findNoDelete($id);
+        $exist = $model->find($id);
+        // $exist = $model->findNoDelete($id);
         if(!$exist){
             return $this->sendError("Data tidak ada");
         }
@@ -70,7 +71,7 @@ class PersonalController extends Controller
     
     public function show($id) {
         $model = new Personal;
-        $exist = $model->findNoDelete($id);
+        $exist = $model->find($id);
         if(!$exist){
             return $this->sendError("Data tidak ada");
         }

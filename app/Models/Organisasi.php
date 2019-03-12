@@ -23,6 +23,6 @@ class Organisasi extends Model
         'name' => 'required',
         'country' => 'required',
         'key' => 'required',
-        'focal' => 'required',
+        'focal' => '',
     ];
 }
